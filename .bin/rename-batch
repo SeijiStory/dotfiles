@@ -1,0 +1,4 @@
+#!/bin/mksh
+for i in *.$1; do
+        mv "$i" "${i%.$2}.$3";
+done

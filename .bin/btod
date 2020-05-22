@@ -1,0 +1,3 @@
+#!/bin/mksh
+VAL=`btox $@`
+xtod $VAL

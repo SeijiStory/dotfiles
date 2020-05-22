@@ -1,0 +1,44 @@
+#!/bin/mksh
+STRING=`echo $@ | tr -d ' '`
+# printf "0x"
+while [ "$STRING" != "" ]; do
+    BLOCK=`echo $STRING | head -c4`
+    if [ "$BLOCK" = "0000" ]; then
+        printf "0"
+    elif [ "$BLOCK" = "0001" ]; then
+        printf "1"
+    elif [ "$BLOCK" = "0010" ]; then
+        printf "2"
+    elif [ "$BLOCK" = "0011" ]; then
+        printf "3"
+    elif [ "$BLOCK" = "0100" ]; then
+        printf "4"
+    elif [ "$BLOCK" = "0101" ]; then
+        printf "5"
+    elif [ "$BLOCK" = "0110" ]; then
+        printf "6"
+    elif [ "$BLOCK" = "0111" ]; then
+        printf "7"
+    elif [ "$BLOCK" = "1000" ]; then
+        printf "8"
+    elif [ "$BLOCK" = "1001" ]; then
+        printf "9"
+    elif [ "$BLOCK" = "1010" ]; then
+        printf "A"
+    elif [ "$BLOCK" = "1011" ]; then
+        printf "B"
+    elif [ "$BLOCK" = "1100" ]; then
+        printf "C"
+    elif [ "$BLOCK" = "1101" ]; then
+        printf "D"
+    elif [ "$BLOCK" = "1110" ]; then
+        printf "E"
+    elif [ "$BLOCK" = "1111" ]; then
+        printf "F"
+    else
+        printf "X"
+    fi
+    NEW=`echo $STRING`
+    STRING=`echo $NEW | tail -c+5`
+done
+echo

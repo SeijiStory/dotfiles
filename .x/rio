@@ -1,0 +1,3 @@
+killall xbindkeys
+xbindkeys -f $HOME/.x/.rio/.xbindkeysrc &
+exec rio -grey

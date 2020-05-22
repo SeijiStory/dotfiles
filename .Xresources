@@ -1,0 +1,49 @@
+URxvt*font: xft:scientifica:size=9:antialias=false,xft:Symbola:size=9:minspace=False
+URxvt*boldFont: xft:scientifica:size=9,xft:Symbola:size=9
+URxvt.lineSpace: 0
+URxvt.letterSpace: 0
+URxvt.internalBorder: 2
+URxvt.thickness: 5
+*scrollBar: false
+URxvt*termName: rxvt
+URxvt*borderless: false
+
+*highlightColor:     #888888
+*highlightTextColor: #EEEEEE
+
+! special
+*.foreground:   #F9F9F9
+*.background:   #1A1A25
+*.cursorColor:  #F9F9F9
+
+! black
+*.color0:       #1A1A25
+*.color8:       #383C4A
+
+! red
+*.color1:       #C46F6E
+*.color9:       #C46F6E
+
+! green
+*.color2:       #82C088
+*.color10:      #82C088
+
+! yellow
+*.color3:       #8A885D
+*.color11:      #8A885D
+
+! blue
+*.color4:       #787BC0
+*.color12:      #787BC0
+
+! magenta
+*.color5:       #C080B4
+*.color13:      #C080B4
+
+! cyan
+*.color6:       #5CA5C0
+*.color14:      #5CA5C0
+
+! white
+*.color7:       #A3A4AB
+*.color15:      #F9F9F9

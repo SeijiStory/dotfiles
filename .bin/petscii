@@ -1,0 +1,24 @@
+#!/usr/local/bin/pts-tcc -run
+#include <stdio.h>
+
+#define CAPS(x) ((x) >= 'A' && (x) <= 'Z')
+int main(int argc, char **argv)
+{
+	if (argc < 2)
+		return 1;
+	int i;
+	for (i = 1; i < argc; ++i) {
+		int j;
+		for (j = 0; argv[i][j] != '\0'; ++j) {
+			char tmp = argv[i][j];
+			if (CAPS(tmp))
+				tmp += 0x20;
+			char c = tmp - 'a' + 1;
+			printf("$%02X,", c);
+		}
+		if (i != argc - 1)
+			printf("$20,");
+	}
+	printf("$00\n");
+	return 0;
+}

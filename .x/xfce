@@ -1,0 +1,3 @@
+xfce4-panel &
+cat ~/.x/.xfce/.gtkrc-2.0 > ~/.gtkrc-2.0
+exec xfwm4

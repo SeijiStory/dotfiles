@@ -1,0 +1,2 @@
+#!/bin/mksh
+cat .dwarfforttiles.txt

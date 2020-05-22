@@ -1,0 +1,7 @@
+#!/bin/sh
+STATUS=`systemctl --user is-active offlineimap.service`
+if [ $STATUS = "inactive" ]; then
+        offlineimap -o
+        systemctl --user start offlineimap
+fi
+neomutt

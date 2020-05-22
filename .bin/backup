@@ -1,0 +1,7 @@
+#!/bin/mksh
+for i in $@; do
+        DIRNAME=`dirname $i`;
+        echo $DIRNAME;
+        mkdir -p "$HOME/.backup/$DIRNAME";
+        cp $i "$HOME/.backup/$DIRNAME/$(/bin/date +'%Y_%b%d_%I-%M-%S')_$(basename $i).bak"
+done

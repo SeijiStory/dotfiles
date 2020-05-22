@@ -1,0 +1,3 @@
+# dmenu 1920x1080
+"dmenu_run -h 18 -i -x 0 -y 1062 -l 0 -w 1920 -q -p '>>' -fn 'scientifica-9' -nf '#F9F9F9' -sb '#1A1A25' -nb '#1A1A25'"
+        Mod4+D

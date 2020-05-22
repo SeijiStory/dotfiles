@@ -1,0 +1,2 @@
+#!/bin/bash
+cat ~/.interject | xclip -selection c
