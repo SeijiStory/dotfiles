@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/mksh
 
 START=1
 STR=""
