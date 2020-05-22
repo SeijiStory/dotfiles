@@ -133,4 +133,4 @@ alias whoami="9 whoami"
 alias yes="9 yes" 
 
 # Other Operations
-bind -m '^L'='M-^L'
+bind -m '^L'='^[^L'
