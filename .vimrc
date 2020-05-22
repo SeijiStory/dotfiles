@@ -70,7 +70,7 @@ set noexpandtab
 set softtabstop=8
 set autoindent
 set smartindent
-" set nowrap
+set nowrap
 set clipboard=unnamed
 filetype indent on
 
