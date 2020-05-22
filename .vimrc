@@ -3,21 +3,21 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'w0rp/ale'
+Plugin 'Raimondi/delimitMate'
 Plugin 'tmhedberg/matchit'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar'
-Plugin 'rdnetto/YCM-Generator'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'vim-scripts/scratch.vim'
-" Plugin 'ternjs/tern_for_vim'
-Plugin 'wlangstroth/vim-racket'
-Plugin 'vim-scripts/xterm16.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'pangloss/vim-javascript'
 Plugin 'MaxMEllon/vim-jsx-pretty'
-Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'wlangstroth/vim-racket'
 Plugin 'tpope/vim-sleuth'
-Plugin 'w0rp/ale'
+Plugin 'vim-scripts/xterm16.vim'
+Plugin 'rdnetto/YCM-Generator'
 
 call vundle#end()
 filetype plugin indent on 
