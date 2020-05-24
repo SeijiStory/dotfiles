@@ -27,41 +27,42 @@ set t_Co=16
 set nocompatible
 filetype indent plugin on
 syntax on
-set omnifunc=syntaxcomplete#Complete
-set wildmenu
-set shell=/bin/mksh
-set iskeyword-=_
-set showcmd
-set nocompatible
-set exrc
-set secure
-set hidden
-set pastetoggle=<f11>
+
+set autoindent
 set backupdir=~/.vim/backup//
-set directory=~/.vim/backup/swp//
-set undodir=~/.vim/backup/un//
-set shortmess=AItfilmnrw
-set linebreak
 set bg=dark
-set modelines=0
-set nomodeline
 set cc=73,81,101
-set numberwidth=6
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+set cmdheight=1
+set directory=~/.vim/backup/swp//
+set exrc
+set hidden
 set hlsearch
 set ignorecase
-set smartcase
-set autoindent
-set nostartofline
-set ruler
+set iskeyword-=_
 set laststatus=2
-set visualbell
-set t_vb=
+set linebreak
+set modelines=0
 set mouse=a
-set cmdheight=1
-set number
+set nocompatible
+set nomodeline
+set nostartofline
 set notimeout ttimeout ttimeoutlen=200
+set number
+set numberwidth=6
+set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<F11>
+set pastetoggle=<f11>
+set ruler
+set secure
+set shell=/bin/mksh
+set shortmess=AItfilmnrw
+set showcmd
+set smartcase
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
+set t_vb=
+set undodir=~/.vim/backup/un//
+set visualbell
+set wildmenu
 
 " Indentation
 set tabstop=8
