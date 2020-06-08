@@ -5,7 +5,7 @@ PS1=" \$PWD >> "
 
 # Exports
 export CCOMPILER="tcc"
-export EDITOR=neovim
+export EDITOR=nvim
 export EDUKE32_MUSIC_CMD="fluidsynth -a alsa -m alsa_seq -l /home/seiji/Soundfont/Nokia_30.sf2"
 export ENV=$HOME/.kshrc
 export EXPLORER=spacefm
