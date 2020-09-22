@@ -46,7 +46,7 @@ mpd &
 xbindkeys &
 compton -bc --mark-ovredir-focused --config ~/.config/compton.conf &
 hsetroot -solid "#1A1A25" &
-nm-applet &
+cmst &
 ibus-daemon -drx &
 urxvtd &
 unclutter &
@@ -54,3 +54,4 @@ xmodmap ~/.Xmodmap &
 redshift-gtk &
 xcalib ~/Documents/Monitor_17.11.2011_1.icc &
 xgamma -gamma 0.8 &
+xsetwacom --set "Wacom Graphire4 4x5 Pen stylus" Area 0 0 10208 5739

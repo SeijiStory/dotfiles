@@ -72,7 +72,7 @@
 #
 "firefox"
 	XF86Launch1
-"urxvtc -e /bin/mksh"
+"urxvtc"
 	Mod4+Return
 "physlock -m"
 	XF86ScreenSaver

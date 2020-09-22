@@ -38,7 +38,7 @@ set exrc
 set hidden
 set hlsearch
 set ignorecase
-set iskeyword-=_
+" set iskeyword-=_
 set laststatus=2
 set linebreak
 set modelines=0
@@ -92,8 +92,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <S-T> :bn<CR>
 nnoremap <S-Y> :bp<CR>
-nnoremap [[ :ALENextWrap<CR>
-nnoremap ]] :ALEPreviousWrap<CR>
+nnoremap ]] :ALENextWrap<CR>
+nnoremap [[ :ALEPreviousWrap<CR>
 inoremap <C-BS> <C-W>
 nnoremap r R
 nnoremap R ^R

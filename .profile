@@ -1,7 +1,7 @@
 cat $HOME/.config/htop/htoprc~ > $HOME/.config/htop/htoprc
 # If not running interactively, don't do anything
 source /etc/profile.d/plan9.sh
-PS1=" \$PWD >> "
+PS1=" \$PWD $ "
 
 # Exports
 export CCOMPILER="tcc"
@@ -24,3 +24,10 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DESKTOP_DIR=$HOME/Downloads
 export XMODIFIERS=@im=ibus
 export _JAVA_OPTIONS="-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+
+if [ -z $SSH_CLIENT ] && [ -z $TMUX ]; then
+        mpd --kill
+        mpd
+        amixer set Master `cat pulse.status` -q
+        ~/.bin/prompt.sh
+fi
