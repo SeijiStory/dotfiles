@@ -28,6 +28,7 @@ alias ytdl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
 alias ytmu="youtube-dl -x --audio-format mp3"
 
 # Use Plan9 Port coreutils
+alias 9man="9 man"
 alias arch="9 arch" 
 alias b2sum="9 b2sum"
 alias b2sum="9 b2sum" 

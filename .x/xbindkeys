@@ -82,9 +82,9 @@
 	XF86AudioRaiseVolume 
 "amixer sset Master 5%- && pulseaudio.sh"
 	XF86AudioLowerVolume 
-"pactl set-sink-mute 2 toggle"
+"amixer sset Master toggle"
 	XF86AudioMute 
-"pulseaudio-ctl mute-input"
+"amixer sset Capture toggle"
 	XF86AudioMicMute 
 "mpc toggle ; mpc seek -00:00:01"
 	XF86AudioPlay 

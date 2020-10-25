@@ -35,6 +35,7 @@ fi
 
 export QT_STYLE_OVERRIDE=GTK+
 gsettings set org.gnome.desktop.interface gtk-theme Arc-Dark &
+cat "$HOME/.gtkrc-2.0~" > "$HOME/.gtkrc-2.0" &
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1 &
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2 &
 xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Timeout" 200 &
@@ -52,6 +53,7 @@ urxvtd &
 unclutter &
 xmodmap ~/.Xmodmap &
 redshift-gtk &
-xcalib ~/Documents/Monitor_17.11.2011_1.icc &
 xgamma -gamma 0.8 &
-xsetwacom --set "Wacom Graphire4 4x5 Pen stylus" Area 0 0 10208 5739
+charge_notify.sh &
+xcalib ~/Documents/Monitor_17.11.2011_1.icc &
+xsetwacom --set "Wacom Graphire4 4x5 Pen stylus" Area 0 0 10208 5739 &

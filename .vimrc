@@ -5,19 +5,23 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'w0rp/ale'
-Plugin 'Raimondi/delimitMate'
+" Plugin 'Raimondi/delimitMate'
 Plugin 'tmhedberg/matchit'
 Plugin 'scrooloose/nerdtree'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'vim-scripts/scratch.vim'
-Plugin 'majutsushi/tagbar'
 Plugin 'pangloss/vim-javascript'
 Plugin 'MaxMEllon/vim-jsx-pretty'
 Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'wlangstroth/vim-racket'
 Plugin 'tpope/vim-sleuth'
+Plugin 'OrangeT/vim-csharp'
 Plugin 'vim-scripts/xterm16.vim'
 Plugin 'rdnetto/YCM-Generator'
+Plugin 'preservim/tagbar'
+Plugin 'xolox/vim-misc'
+" Plugin 'xolox/vim-easytags'
+Plugin 'vim-scripts/taglist.vim'
 
 call vundle#end()
 filetype plugin indent on 
@@ -85,6 +89,7 @@ nnoremap <silent> <C-c> i<CR><Esc>
 " Nerdtree
 nnoremap <silent> <C-t> :NERDTreeToggle<CR>
 nnoremap <silent> <C-b> :TagbarToggle<CR>
+" nnoremap <silent> <C-b> :TlistToggle<CR>
 " Other
 nnoremap <C-z> <NOP> 
 nnoremap <F1> <NOP>
@@ -136,6 +141,13 @@ highlight NonText ctermfg=8
 " Tagbar
 let g:tagbar_autofocus = 1
 let g:tagbar_autoclose = 1
+let g:tagbar_width = 50
+let g:tagbar_sort = 0
+
+" Taglist
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_WinWidth = 50
+let Tlist_Use_Right_Window = 1
 
 " Misc
 let NERDTreeShowHidden=1
@@ -156,6 +168,10 @@ for c in range(char2nr('A'), char2nr('Z'))
 endfor
 " Kill the capslock when leaving insert mode.
 autocmd InsertLeave * set iminsert=0
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 set clipboard+=unnamedplus
 
 "Undo Persistence
