@@ -101,7 +101,7 @@ bindsym $mod+1 workspace number 1:main
 bindsym $mod+2 workspace number 2:web
 bindsym $mod+3 workspace number 3:code
 bindsym $mod+4 workspace number 4:art
-bindsym $mod+5 workspace number 5:server
+bindsym $mod+5 workspace number 5:music
 bindsym $mod+6 workspace number 6:books
 bindsym $mod+7 workspace number 7:office
 bindsym $mod+8 workspace number 8:video
@@ -120,7 +120,7 @@ bindsym $mod+$ALT+1 rename workspace to "1:main"
 bindsym $mod+$ALT+2 rename workspace to "2:web"
 bindsym $mod+$ALT+3 rename workspace to "3:code"
 bindsym $mod+$ALT+4 rename workspace to "4:art"
-bindsym $mod+$ALT+5 rename workspace to "5:server"
+bindsym $mod+$ALT+5 rename workspace to "5:music"
 bindsym $mod+$ALT+6 rename workspace to "6:books"
 bindsym $mod+$ALT+7 rename workspace to "7:office"
 bindsym $mod+$ALT+8 rename workspace to "8:video"
@@ -139,7 +139,7 @@ bindsym $mod+Shift+1 move container to workspace "1:main"
 bindsym $mod+Shift+2 move container to workspace "2:web"
 bindsym $mod+Shift+3 move container to workspace "3:code"
 bindsym $mod+Shift+4 move container to workspace "4:art"
-bindsym $mod+Shift+5 move container to workspace "5:server"
+bindsym $mod+Shift+5 move container to workspace "5:music"
 bindsym $mod+Shift+6 move container to workspace "6:books"
 bindsym $mod+Shift+7 move container to workspace "7:office"
 bindsym $mod+Shift+8 move container to workspace "8:video"

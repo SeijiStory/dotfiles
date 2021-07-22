@@ -4,24 +4,25 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'w0rp/ale'
+" Plugin 'MaxMEllon/vim-jsx-pretty'
+" Plugin 'OrangeT/vim-csharp'
 " Plugin 'Raimondi/delimitMate'
-Plugin 'tmhedberg/matchit'
-Plugin 'scrooloose/nerdtree'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'vim-scripts/scratch.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'MaxMEllon/vim-jsx-pretty'
-Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'wlangstroth/vim-racket'
-Plugin 'tpope/vim-sleuth'
-Plugin 'OrangeT/vim-csharp'
-Plugin 'vim-scripts/xterm16.vim'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'preservim/tagbar'
-Plugin 'xolox/vim-misc'
+" Plugin 'leafgarland/typescript-vim'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'peitalin/vim-jsx-typescript'
 " Plugin 'xolox/vim-easytags'
+Plugin 'preservim/tagbar'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tmhedberg/matchit'
+Plugin 'tpope/vim-sleuth'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'vim-scripts/xterm16.vim'
+Plugin 'vivien/vim-linux-coding-style'
+Plugin 'w0rp/ale'
+Plugin 'wlangstroth/vim-racket'
+Plugin 'xolox/vim-misc'
+Plugin 'ycm-core/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on 
@@ -33,11 +34,11 @@ filetype indent plugin on
 syntax on
 
 set autoindent
-set backupdir=~/.vim/backup//
+set backupdir=$HOME/.vim/backup//
 set bg=dark
 set cc=73,81,101
 set cmdheight=1
-set directory=~/.vim/backup/swp//
+set directory=$HOME/.vim/backup/swp//
 set exrc
 set hidden
 set hlsearch
@@ -130,6 +131,10 @@ set statusline+=%*
 let g:ale_sign_error = 'xx'
 let g:ale_sign_warning = '..'
 let g:ale_javascript_eslint_use_global = 1
+let g:ale_linters = {'c': ['gcc']}
+let g:ale_c_gcc_options = '-Wall -O2 -std=gnu99'
+let g:ale_c_parse_compile_commands = 1
+let g:ale_c_parse_makefile = 1
  
 " Highlighting
 highlight ColorColumn ctermbg=8
@@ -150,9 +155,15 @@ let Tlist_WinWidth = 50
 let Tlist_Use_Right_Window = 1
 
 " Misc
+
+" autocmd BufRead,BufNewFile /home/seiji/SFU/CMPT300/asn2/ let g:ale_c_gcc_options = '-Wall -lsocket -lnsl -Os -std=c99'
+
 let NERDTreeShowHidden=1
 let g:syntastic_java_javac_config_file_enabled=1
 let g:syntastic_java_javac_classpath = ".lib/*.jar\n./src/\n.bin/"
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:NERDTreeSortOrder = map(range(0, 25), '"\\." . nr2char(char2nr("a") + v:val) . "[^.]*$"')
 filetype on
 filetype plugin on
 syntax on

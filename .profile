@@ -2,7 +2,8 @@ if [ -f $HOME/.kshrc ]; then
         . $HOME/.kshrc
 fi
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-        PS1="\$PWD > "
+        PS1=""
+        PS1+='$(who):$(pwd -L | sed "s,^$HOME,~,") > '
         export DISPLAY=:0
 else
         # If not running interactively, don't do anything
@@ -13,6 +14,7 @@ else
 
         # Exports
         export CCOMPILER="tcc"
+        export COUNTRY="CA"
         export DESKTOP_SESSION=gnome
         export EDITOR=nvim
         export EDUKE32_MUSIC_CMD="fluidsynth -a alsa -m alsa_seq -l /home/seiji/Soundfont/Nokia_30.sf2"
@@ -27,9 +29,7 @@ else
         export PAGER=less
         export PATH="$HOME/.bin:$PATH:$HOME/.dotnet/tools/"
         export POWERSHELL_TELEMETRY_OUTPUT=1
-        # export QT_IM_MODULE=ibus
-        export QT_QPA_PLATFORMTHEME=Kvantum
-        export QT_STYLE_OVERRIDE=Kvantum
+        export QT_IM_MODULE=ibus
         export SCHEME=mit-scheme
         export TERM=xterm
         export XDG_CONFIG_HOME=$HOME/.config

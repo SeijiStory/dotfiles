@@ -82,9 +82,9 @@
 	XF86AudioRaiseVolume 
 "amixer sset Master 5%- && pulseaudio.sh"
 	XF86AudioLowerVolume 
-"amixer sset Master toggle"
+"pactl set-sink-mute 2 toggle"
 	XF86AudioMute 
-"amixer sset Capture toggle"
+"pulseaudio-ctl mute-input"
 	XF86AudioMicMute 
 "mpc toggle ; mpc seek -00:00:01"
 	XF86AudioPlay 
@@ -96,8 +96,8 @@
 	XF86AudioPrev
 "/home/seiji/.bin/touchpad.sh"
 	XF86TouchpadToggle
-"/home/seiji/.bin/display.sh"
-        XF86Display
+# "/home/seiji/.bin/display.sh"
+#        XF86Display
 # dmenu 1366x768
 "dmenu_run -h 18 -i -x 0 -y 750 -l 0 -w 1366 -q -p '>>' -fn 'scientifica-9' -nf '#F9F9F9' -sb '#1A1A25' -nb '#1A1A25'"
-        Mod4+D
+	Mod4+D

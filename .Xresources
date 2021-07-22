@@ -1,14 +1,14 @@
 *font:			xft:scientifica:size=9:antialias=false:minspace=false,xft:Symbola:size=9:minspace=false
 *boldFont:		xft:scientifica:size=9:style=bold:minspace=false:antialias=false,xft:Symbola:size=9
 *lineSpace:		0
-*letterSpace:		-1
+*letterSpace:		0
 *internalBorder:	2
 *scrollBar:		false
 *borderless:		true
 
 ! URxvt Settings
 URxvt*termName:		xterm
-URxvt*letterSpace:	-6
+URxvt*letterSpace:	1
 URxvt*font:		xft:scientifica:size=9:minspace=false,xft:Symbola:size=9:minspace=false
 
 *highlightColor:	#888888
