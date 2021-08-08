@@ -20,6 +20,7 @@ else
         export EDUKE32_MUSIC_CMD="fluidsynth -a alsa -m alsa_seq -l /home/seiji/Soundfont/Nokia_30.sf2"
         export ENV=$HOME/.kshrc
         export EXPLORER=spacefm
+        export GPG_TTY=$(tty)
         export GTK2_RC_FILES=$HOME/.gtkrc-2.0
         export GTK_IM_MODULE=ibus
         export HISTFILE=$HOME/.ksh_history

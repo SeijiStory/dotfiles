@@ -11,11 +11,13 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'pangloss/vim-javascript'
 " Plugin 'peitalin/vim-jsx-typescript'
 " Plugin 'xolox/vim-easytags'
+Plugin 'scrooloose/nerdtree'
+" Plugin 'eiginn/netrw'
 Plugin 'preservim/tagbar'
 Plugin 'rdnetto/YCM-Generator'
-Plugin 'scrooloose/nerdtree'
 Plugin 'tmhedberg/matchit'
 Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-vinegar'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/xterm16.vim'
 Plugin 'vivien/vim-linux-coding-style'
@@ -131,8 +133,10 @@ set statusline+=%*
 let g:ale_sign_error = 'xx'
 let g:ale_sign_warning = '..'
 let g:ale_javascript_eslint_use_global = 1
-let g:ale_linters = {'c': ['gcc']}
-let g:ale_c_gcc_options = '-Wall -O2 -std=gnu99'
+" let g:ale_linters = {'c': ['gcc']}
+let g:ale_linters = {'c': ['clang']}
+let g:ale_c_gcc_options = '-Wall -Wextra -std=c99'
+let g:ale_c_clang_options = '-Wall -Wextra -std=c99'
 let g:ale_c_parse_compile_commands = 1
 let g:ale_c_parse_makefile = 1
  
@@ -155,15 +159,28 @@ let Tlist_WinWidth = 50
 let Tlist_Use_Right_Window = 1
 
 " Misc
+set autochdir
 
 " autocmd BufRead,BufNewFile /home/seiji/SFU/CMPT300/asn2/ let g:ale_c_gcc_options = '-Wall -lsocket -lnsl -Os -std=c99'
+
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+let g:netrw_sort_sequence='\.c$,\.h$,*'
+let g:netrw_fastbrowse = 0
+" nnoremap <silent> <C-t> :Lexplore<CR>
+augroup ProjectDrawer
+  autocmd!
+augroup END
 
 let NERDTreeShowHidden=1
 let g:syntastic_java_javac_config_file_enabled=1
 let g:syntastic_java_javac_classpath = ".lib/*.jar\n./src/\n.bin/"
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:NERDTreeSortOrder = map(range(0, 25), '"\\." . nr2char(char2nr("a") + v:val) . "[^.]*$"')
 filetype on
 filetype plugin on
 syntax on

@@ -4,10 +4,8 @@ PS1=""
 PS1+='$(pwd -L | sed "s,^$HOME,~,") $ '
 
 # Aliases
-alias cc=$CCOMPILER
 alias clisp='echo "$0: clisp: not found; did you mean (((clisp)))?"'
 alias connman="connmanctl"
-alias dff='df -h | grep "^(\/dev|Filesystem)"'
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias emacs="/bin/emacs -nw"
 alias fastboot='/opt/android-sdk/platform-tools/fastboot'
