@@ -61,7 +61,7 @@ set pastetoggle=<F11>
 set pastetoggle=<f11>
 set ruler
 set secure
-set shell=/bin/mksh
+set shell=/bin/sh
 set shortmess=AItfilmnrw
 set showcmd
 set smartcase
