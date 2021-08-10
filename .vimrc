@@ -133,8 +133,8 @@ set statusline+=%*
 let g:ale_sign_error = 'xx'
 let g:ale_sign_warning = '..'
 let g:ale_javascript_eslint_use_global = 1
-" let g:ale_linters = {'c': ['gcc']}
-let g:ale_linters = {'c': ['clang']}
+let g:ale_linters = {'c': ['gcc']}
+" let g:ale_linters = {'c': ['clang']}
 let g:ale_c_gcc_options = '-Wall -Wextra -std=c99'
 let g:ale_c_clang_options = '-Wall -Wextra -std=c99'
 let g:ale_c_parse_compile_commands = 1
