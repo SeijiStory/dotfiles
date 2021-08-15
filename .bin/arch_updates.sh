@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 WIFI=`cat /sys/class/net/wlp3s0/operstate`
 ETH=`cat /sys/class/net/enp0s25/operstate`
 if [ $WIFI == "up" -o $ETH == "up" ]; then

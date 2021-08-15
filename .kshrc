@@ -21,7 +21,7 @@ alias scheme="rlwrap -r -c -f ~/.scheme_completion $SCHEME"
 alias tm="transmission-remote-cli"
 alias transmission="transmission-remote-cli"
 alias vim="nvim"
-alias yt="rlwrap straw-viewer"
+alias yt="rlwrap pipe-viewer"
 alias ytdl="youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'"
 alias ytmu="youtube-dl -x --audio-format mp3"
 

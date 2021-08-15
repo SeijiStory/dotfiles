@@ -39,6 +39,7 @@ else
                 export HISTFILE=$HOME/.ksh_history
                 export HISTSIZE=512
                 export LS_COLORS="$LS_COLORS:ow="
+                export LYNX_LSS="$HOME/lynx.lss"
                 export MANPAGER=less
                 export PAGER=less
                 export PATH="$HOME/.bin:$PATH:$HOME/.dotnet/tools/"

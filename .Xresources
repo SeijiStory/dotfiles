@@ -33,8 +33,8 @@ URxvt*font:		xft:scientifica:size=9:minspace=false,xft:Symbola:size=9:minspace=f
 *color10:		#82C088
 
 ! yellow
-*color3:		#8A885D
-*color11:		#8A885D
+*color3:		#F4E896
+*color11:		#F4E896
 
 ! blue
 *color4:		#787BC0
