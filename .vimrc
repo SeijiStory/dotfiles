@@ -12,7 +12,10 @@ if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
 	Plugin 'cespare/vim-toml'
 	Plugin 'dpc/vim-smarttabs'
 	Plugin 'preservim/tagbar'
-	Plugin 'rdnetto/YCM-Generator'
+	if has('nvim') || v:version >= 8.1.2669
+		Plugin 'ycm-core/YouCompleteMe'
+		Plugin 'rdnetto/YCM-Generator'
+	endif
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'sheerun/vim-polyglot'
 	Plugin 'tmhedberg/matchit'
@@ -22,7 +25,6 @@ if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
 	Plugin 'w0rp/ale'
 	Plugin 'wlangstroth/vim-racket'
 	Plugin 'xolox/vim-misc'
-	Plugin 'ycm-core/YouCompleteMe'
 	call vundle#end()
 endif
 
@@ -103,10 +105,6 @@ function! StatuslineGit()
 	let l:branchname = GitBranch()
 	return strlen(l:branchname) > 0 ? '[git:'.l:branchname.']':''
 endfunction
-function! BuffersOpen()
-	let l:buffers = len(getbufinfo({'buflisted':1}))
-	return l:buffers
-endfunction
 " Left Side
 set stl=%t%m
 set stl+=%y
@@ -114,7 +112,15 @@ set stl+=[%{strlen(&fenc)?&fenc:'none'},%{&ff}]
 set stl+=%{StatuslineGit()}
 set stl+=%r%=
 " Right Side
-set stl+=%c,%l/%L(%P)[0x%02B][bufs:%{BuffersOpen()}]
+if exists("getbufinfo")
+	function! BuffersOpen()
+		let l:buffers = len(getbufinfo({'buflisted':1}))
+		return l:buffers
+	endfunction
+	set stl+=%c,%l/%L(%P)[0x%02B][bufs:%{BuffersOpen()}]
+else
+	set stl+=%c,%l/%L(%P)[0x%02B]
+endif
 
 " Indentation
 set ts=8 sw=8 noet sts=8 ai si

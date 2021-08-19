@@ -8,11 +8,16 @@ case "${unameOut}" in
 esac
 if [ "$machine" != "Linux" ]; then
         PS1="\w $ "
+        if [ -f "$HOME/.bashrc" ]; then
+                . $HOME/.bashrc
+        fi
         export PATH="$PATH:$HOME/.bin"
         alias config='/usr/bin/git --git-dir=$HOME/.cfg --work-tree=$HOME'
 else
         if [ -f $HOME/.kshrc ]; then
                 . $HOME/.kshrc
+        elif [ -f "$HOME/.bashrc" ]; then
+                . $HOME/.bashrc
         fi
         if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
                 PS1=""
