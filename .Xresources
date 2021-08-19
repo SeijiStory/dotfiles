@@ -11,8 +11,8 @@ URxvt*termName:		xterm
 URxvt*letterSpace:	1
 URxvt*font:		xft:scientifica:size=9:minspace=false,xft:Symbola:size=9:minspace=false
 
-*highlightColor:	#888888
-*highlightTextColor:	#EEEEEE
+*highlightColor:	#1A1A25
+*highlightTextColor:	#F9F9F9
 
 ! special
 *foreground:		#F9F9F9
@@ -25,27 +25,27 @@ URxvt*font:		xft:scientifica:size=9:minspace=false,xft:Symbola:size=9:minspace=f
 *color8:		#383C4A
 
 ! red
-*color1:		#C46F6E
+*color1:		#7E353E
 *color9:		#C46F6E
 
 ! green
-*color2:		#82C088
+*color2:		#427850
 *color10:		#82C088
 
 ! yellow
-*color3:		#F4E896
+*color3:		#8A885D
 *color11:		#F4E896
 
 ! blue
-*color4:		#787BC0
+*color4:		#404377
 *color12:		#787BC0
 
 ! magenta
-*color5:		#C080B4
+*color5:		#733D7E
 *color13:		#C080B4
 
 ! cyan
-*color6:		#5CA5C0
+*color6:		#367982
 *color14:		#5CA5C0
 
 ! white

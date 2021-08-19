@@ -1,167 +1,225 @@
 " Vundle
+if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
+	set rtp+=~/.vim/bundle/Vundle.vim
+	call vundle#begin()
+	Plugin 'VundleVim/Vundle.vim'
+	" Plugin 'MaxMEllon/vim-jsx-pretty'
+	" Plugin 'OrangeT/vim-csharp'
+	" Plugin 'leafgarland/typescript-vim'
+	" Plugin 'neomake/neomake'
+	" Plugin 'pangloss/vim-javascript'
+	" Plugin 'peitalin/vim-jsx-typescript'
+	Plugin 'cespare/vim-toml'
+	Plugin 'dpc/vim-smarttabs'
+	Plugin 'preservim/tagbar'
+	Plugin 'rdnetto/YCM-Generator'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'sheerun/vim-polyglot'
+	Plugin 'tmhedberg/matchit'
+	Plugin 'tpope/vim-commentary'
+	Plugin 'vim-scripts/taglist.vim'
+	Plugin 'vivien/vim-linux-coding-style'
+	Plugin 'w0rp/ale'
+	Plugin 'wlangstroth/vim-racket'
+	Plugin 'xolox/vim-misc'
+	Plugin 'ycm-core/YouCompleteMe'
+	call vundle#end()
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+" handle vim vs. neovim backup formats
+if has('nvim')
+	set backupdir=$HOME/.vim/backup//
+	set directory=$HOME/.vim/backup/swp//
+	set undodir=~/.vim/backup/un//
+else 
+	set backupdir=$HOME/.vim/oldvim/backup//
+	set directory=$HOME/.vim/oldvim/backup/swp//
+	set undodir=~/.vim/oldvim/backup/un//
+endif
 
-" Plugin 'MaxMEllon/vim-jsx-pretty'
-" Plugin 'OrangeT/vim-csharp'
-" Plugin 'Raimondi/delimitMate'
-" Plugin 'leafgarland/typescript-vim'
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'peitalin/vim-jsx-typescript'
-" Plugin 'xolox/vim-easytags'
-Plugin 'scrooloose/nerdtree'
-" Plugin 'eiginn/netrw'
-Plugin 'preservim/tagbar'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'tmhedberg/matchit'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-vinegar'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-scripts/xterm16.vim'
-Plugin 'vivien/vim-linux-coding-style'
-Plugin 'w0rp/ale'
-Plugin 'wlangstroth/vim-racket'
-Plugin 'xolox/vim-misc'
-Plugin 'ycm-core/YouCompleteMe'
-
-call vundle#end()
+" Core Stuff I guess
+colorscheme disco
+filetype indent on
 filetype plugin indent on 
-
-" Features
+set nocp
 set t_Co=16
-set nocompatible
-filetype indent plugin on
 syntax on
 
-set autoindent
-set backupdir=$HOME/.vim/backup//
+" Basic Config
 set bg=dark
 set cc=73,81,101
-set cmdheight=1
-set directory=$HOME/.vim/backup/swp//
+set cb+=unnamedplus
+set ch=1
 set exrc
-set hidden
-set hlsearch
-set ignorecase
-" set iskeyword-=_
-set laststatus=2
-set linebreak
-set modelines=0
+set hid
+set hls
+set ic scs
+set ls=2
+set lbr
 set mouse=a
-set nocompatible
-set nomodeline
-set nostartofline
-set notimeout ttimeout ttimeoutlen=200
-set number
-set numberwidth=6
-set omnifunc=syntaxcomplete#Complete
-set pastetoggle=<F11>
-set pastetoggle=<f11>
-set ruler
+set noml
+set nosol
+set nu nuw=6
+set ofu=syntaxcomplete#Complete
+set pt=<F11>
+set ru
 set secure
-set shell=/bin/sh
-set shortmess=AItfilmnrw
-set showcmd
-set smartcase
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-set t_vb=
-set undodir=~/.vim/backup/un//
-set visualbell
-set wildmenu
+if isdirectory(expand('/bin/mksh'))
+	set sh=/bin/mksh
+else
+	set sh=/bin/sh
+endif
+set shm=AIat
+set sc
+set undofile
+set vb t_vb=
+set wmnu
+
+" C Stuff
+let g:c_syntax_for_h=1
+
+" Code Folding
+set foldmethod=syntax
+set foldlevel=99
+augroup remember_folds
+	autocmd!
+	autocmd BufWinLeave * mkview
+	autocmd BufWinEnter * silent! loadview
+augroup END
+function! MyFoldText()
+	let nl = v:foldend - v:foldstart + 1
+	let comment = substitute(getline(v:foldstart),"^ *","",1)
+	let linetext = substitute(getline(v:foldstart+1),"^ *","",1)
+	let txt = '+ ' . linetext . ' : length ' . nl
+	return txt
+endfunction
+set foldtext=MyFoldText()
+
+" Status Line
+function! GitBranch()
+	return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+function! StatuslineGit()
+	let l:branchname = GitBranch()
+	return strlen(l:branchname) > 0 ? '[git:'.l:branchname.']':''
+endfunction
+function! BuffersOpen()
+	let l:buffers = len(getbufinfo({'buflisted':1}))
+	return l:buffers
+endfunction
+" Left Side
+set stl=%t%m
+set stl+=%y
+set stl+=[%{strlen(&fenc)?&fenc:'none'},%{&ff}]
+set stl+=%{StatuslineGit()}
+set stl+=%r%=
+" Right Side
+set stl+=%c,%l/%L(%P)[0x%02B][bufs:%{BuffersOpen()}]
 
 " Indentation
-set tabstop=8
-set shiftwidth=8
-set noexpandtab
-set softtabstop=8
-set autoindent
-set smartindent
+set ts=8 sw=8 noet sts=8 ai si
 set nowrap
-set clipboard=unnamed
-filetype indent on
 
 " Keybinds
 " Toggle Wrapping
-inoremap <F9> :set wrap!<CR>i
-nnoremap <F9> :set wrap!<CR>
-nnoremap <C-k> :Scratch<CR>
+ino <F9> <Esc>:set wrap!<CR>i
+nn <F9> :set wrap!<CR>
 " Break line at cursor
-nnoremap <silent> <C-c> i<CR><Esc>
-" Nerdtree
-nnoremap <silent> <C-t> :NERDTreeToggle<CR>
-nnoremap <silent> <C-b> :TagbarToggle<CR>
-" nnoremap <silent> <C-b> :TlistToggle<CR>
-" Other
-nnoremap <C-z> <NOP> 
-nnoremap <F1> <NOP>
-nnoremap j gj
-nnoremap k gk
-nnoremap <S-T> :bn<CR>
-nnoremap <S-Y> :bp<CR>
-nnoremap ]] :ALENextWrap<CR>
-nnoremap [[ :ALEPreviousWrap<CR>
-inoremap <C-BS> <C-W>
-nnoremap r R
-nnoremap R ^R
-nnoremap <C-i> hi
+nn <silent> <C-c> i<CR><Esc>
+" Cycle buffers
+nn <S-T> :bn<CR>
+nn <S-Y> :bp<CR>
+" Cycle tabs
 map <silent> <M-t> :tabn<CR>
 map <silent> <M-y> :tabp<CR>
-nnoremap <C-L> :nohl<CR><C-L>
-noremap  <F5> :let &l:imi = !&l:imi<CR>
-inoremap <F5> <C-O>:let &l:imi = !&l:imi<CR>
-cnoremap <F5> <C-^>
+" Clear search highlight
+nn <C-L> :nohl<CR><C-L>
+" Avoid help messages
+nn <F1> <NOP>
+" Make 'R' and 'r' behave like 'I' and 'i'
+nn r R
+nn R ^R
+" Better movement
+nn j gj
+nn k gk
+" Quicker fold toggle
+nn zz za
 
-" Syntastic
-set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_c_checkers=['gcc']
-" let g:syntastic_cpp_checkers=['gcc']
-" let g:syntastic_python_checkers=['pyflakes']
-" let g:syntastic_typescript_tsc_fname = ''
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_python_python_exec = 'python3'
-" let g:syntastic_python_checkers = ['python']
+" Neovim Shit
+set ttimeout
+set ttimeoutlen=0
 
-" ALE
-let g:ale_sign_error = 'xx'
-let g:ale_sign_warning = '..'
-let g:ale_javascript_eslint_use_global = 1
-let g:ale_linters = {'c': ['gcc']}
-" let g:ale_linters = {'c': ['clang']}
-let g:ale_c_gcc_options = '-Wall -Wextra -std=c99'
-let g:ale_c_clang_options = '-Wall -Wextra -std=c99'
-let g:ale_c_parse_compile_commands = 1
-let g:ale_c_parse_makefile = 1
- 
-" Highlighting
-highlight ColorColumn ctermbg=8
-highlight LineNr ctermfg=8
-highlight StatusLine ctermfg=0 ctermbg=7
-highlight StatusLineNC ctermfg=0 ctermbg=7
-highlight NonText ctermfg=8
+" Plugin Config
+function! PlugConf()
+	" Neomake
+	if exists(":Neomake")
+		call neomake#configure#automake('nrwi', 500)
+		let g:neomake_c_enabled_makers=['gcc']
+		let g:neomake_gcc_args=[
+					\ '-fsyntax-only',
+					\ '-std=gnu11',
+					\ '-Wall',
+					\ '-Wpedantic',
+					\ '-Wextra',
+					\ '-fopenmp',
+					\ '-I.'
+					\ ]	
+		" Bindings
+		nn [[ :lprev<CR>
+		nn ]] :lnext<CR>
+	endif
+	" YouCompleteMe
+	if exists(":YcmCompleter")
+		let g:ycm_autoclose_preview_window_after_insertion = 1
+		let g:ycm_autoclose_preview_window_after_completion = 1
+	endif
+	" NERDTREE
+	if exists(":NERDTree")
+		let NERDTreeShowHidden=1
+		" Bindings
+		nn <silent> <C-b> :TagbarToggle<CR>
+		nn <silent> <C-t> :NERDTreeToggle<CR>
+	endif
+	" ALE
+	if exists(":ALEEnable")
+		let g:ale_fix_on_save = 1
+		let g:ale_sign_error = 'XX'
+		let g:ale_sign_warning = '>>'
+		let g:ale_linters = {
+					\ 'c': ['gcc']
+					\}
+		" C
+		let g:ale_c_gcc_options = '-Wall -Wextra -Wpedantic -std=gnu99'
+		let g:ale_c_parse_compile_commands = 1
+		let g:ale_c_parse_makefile = 1
+		" Javascript
+		let g:ale_javascript_eslint_use_global = 1
+		" Bindings
+		nn [[ :ALEPreviousWrap<CR>
+		nn ]] :ALENextWrap<CR>
+		nm <F10> :ALEFix<CR>
+	endif
+	" Tagbar
+	if exists(":Tagbar")
+		let g:tagbar_autoclose = 1
+		let g:tagbar_autofocus = 1
+		let g:tagbar_compact = 1
+		let g:tagbar_height = 20
+		let g:tagbar_indent = 2
+		let g:tagbar_jump_lazy_scroll = 0
+		let g:tagbar_position = 'botright'
+		let g:tagbar_show_data_type = 1
+		let g:tagbar_show_tag_linenumbers = 1
+		let g:tagbar_sort = 0
+		let g:tagbar_show_visibility = 1
+		let g:tagbar_visibility_symbols = {
+					\ 'public'    : '+',
+					\ 'protected' : '#',
+					\ 'private'   : '-'
+					\ }
+	endif
 
-" Tagbar
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
-let g:tagbar_width = 50
-let g:tagbar_sort = 0
-
-" Taglist
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_WinWidth = 50
-let Tlist_Use_Right_Window = 1
-
-" Misc
-set autochdir
-
-" autocmd BufRead,BufNewFile /home/seiji/SFU/CMPT300/asn2/ let g:ale_c_gcc_options = '-Wall -lsocket -lnsl -Os -std=c99'
+endfunction
 
 " netrw
 let g:netrw_banner = 0
@@ -171,36 +229,18 @@ let g:netrw_altv = 1
 let g:netrw_winsize = 25
 let g:netrw_sort_sequence='\.c$,\.h$,*'
 let g:netrw_fastbrowse = 0
-" nnoremap <silent> <C-t> :Lexplore<CR>
 augroup ProjectDrawer
-  autocmd!
+	autocmd!
 augroup END
-
-let NERDTreeShowHidden=1
-let g:syntastic_java_javac_config_file_enabled=1
-let g:syntastic_java_javac_classpath = ".lib/*.jar\n./src/\n.bin/"
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-filetype on
-filetype plugin on
-syntax on
-
-" Neovim Shit
-set ttimeout
-set ttimeoutlen=0
 
 " Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
 for c in range(char2nr('A'), char2nr('Z'))
-        execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
-        execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
+	execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
+	execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
 endfor
 " Kill the capslock when leaving insert mode.
 autocmd InsertLeave * set iminsert=0
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
-
-set clipboard+=unnamedplus
-
-"Undo Persistence
-set undofile
+au VimEnter * call PlugConf()
