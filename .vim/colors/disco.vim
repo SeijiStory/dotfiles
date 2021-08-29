@@ -250,7 +250,7 @@ endif
 call <SID>set_colors("PMenuSbar"        , s:fg       , s:dim          , "")
 call <SID>set_colors("PMenuThumb"       , s:fg       , s:dim          , "")
 call <SID>set_colors("Question"         , s:green    , ""             , "")
-call <SID>set_colors("Search"           , s:yellow   , s:fg           , "reverse")
+call <SID>set_colors("Search"           , s:yellow   , s:bg           , "reverse")
 call <SID>set_colors("SpecialKey"       , s:dim      , ""             , "")
 call <SID>set_colors("SpellBad"         , s:dimred   , s:fg           , "reverse")
 call <SID>set_colors("SpellCap"         , ""         , s:truered      , "reverse")

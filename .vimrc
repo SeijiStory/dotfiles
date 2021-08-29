@@ -6,25 +6,25 @@ if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
 	" Plugin 'MaxMEllon/vim-jsx-pretty'
 	" Plugin 'OrangeT/vim-csharp'
 	" Plugin 'leafgarland/typescript-vim'
-	" Plugin 'neomake/neomake'
 	" Plugin 'pangloss/vim-javascript'
 	" Plugin 'peitalin/vim-jsx-typescript'
+	" Plugin 'w0rp/ale'
 	Plugin 'cespare/vim-toml'
 	Plugin 'dpc/vim-smarttabs'
 	Plugin 'preservim/tagbar'
-	if has('nvim') || v:version >= 8.1.2669
-		Plugin 'ycm-core/YouCompleteMe'
-		Plugin 'rdnetto/YCM-Generator'
-	endif
+	Plugin 'neomake/neomake'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'sheerun/vim-polyglot'
 	Plugin 'tmhedberg/matchit'
 	Plugin 'tpope/vim-commentary'
 	Plugin 'vim-scripts/taglist.vim'
 	Plugin 'vivien/vim-linux-coding-style'
-	Plugin 'w0rp/ale'
 	Plugin 'wlangstroth/vim-racket'
 	Plugin 'xolox/vim-misc'
+	if has('nvim') || v:version >= 8.1.2669
+		Plugin 'ycm-core/YouCompleteMe'
+		Plugin 'rdnetto/YCM-Generator'
+	endif
 	call vundle#end()
 endif
 
@@ -149,7 +149,6 @@ nn R ^R
 nn j gj
 nn k gk
 " Quicker fold toggle
-nn zz za
 
 " Neovim Shit
 set ttimeout
@@ -195,7 +194,7 @@ function! PlugConf()
 					\ 'c': ['gcc']
 					\}
 		" C
-		let g:ale_c_gcc_options = '-Wall -Wextra -Wpedantic -std=gnu99'
+		let g:ale_c_gcc_options = '-Wall -Wextra -Wpedantic -std=c11'
 		let g:ale_c_parse_compile_commands = 1
 		let g:ale_c_parse_makefile = 1
 		" Javascript
@@ -250,3 +249,6 @@ if has("autocmd")
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 au VimEnter * call PlugConf()
+if exists(":Neomake")
+	au VimEnter * call neomake#configure#automake('nrwi', 500)
+endif
