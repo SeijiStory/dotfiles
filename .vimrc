@@ -85,8 +85,8 @@ set foldmethod=syntax
 set foldlevel=99
 augroup remember_folds
 	autocmd!
-	autocmd BufWinLeave * mkview
-	autocmd BufWinEnter * silent! loadview
+	autocmd BufWinLeave ?* mkview
+	autocmd BufWinEnter ?* silent! loadview
 augroup END
 function! MyFoldText()
 	let nl = v:foldend - v:foldstart + 1
@@ -156,9 +156,26 @@ set ttimeoutlen=0
 
 " Plugin Config
 function! PlugConf()
+
 	" Neomake
 	if exists(":Neomake")
-		call neomake#configure#automake('nrwi', 500)
+		let g:neomake_virtualtext_current_error=0
+		let g:neomake_error_sign = {
+					\ 'text': 'XX',
+					\ 'texthl': 'NeomakeErrorSign',
+					\ }
+		let g:neomake_warning_sign = {
+					\ 'text': '>>',
+					\ 'texthl': 'NeomakeWarningSign',
+					\ }
+		let g:neomake_message_sign = {
+					\ 'text': '--',
+					\ 'texthl': 'NeomakeMessageSign',
+					\ }
+		let g:neomake_info_sign = {
+					\ 'text': '..',
+					\ 'texthl': 'NeomakeInfoSign',
+					\ }
 		let g:neomake_c_enabled_makers=['gcc']
 		let g:neomake_gcc_args=[
 					\ '-fsyntax-only',
@@ -166,18 +183,40 @@ function! PlugConf()
 					\ '-Wall',
 					\ '-Wpedantic',
 					\ '-Wextra',
+					\ '-Wno-unused-value',
+					\ '-Wpedantic',
+					\ '-Wshadow',
+					\ '-Wpointer-arith',
+					\ '-Wstrict-prototypes',
+					\ '-Wmissing-prototypes',
+					\ '-Wduplicated-cond',
+					\ '-Wduplicated-branches',
+					\ '-Wlogical-op',
+					\ '-Wrestrict',
+					\ '-Wnull-dereference',
+					\ '-Wjump-misses-init',
+					\ '-Wdouble-promotion',
+					\ '-Wformat=2',
+					\ '-Wfloat-equal',
+					\ '-Wcast-align',
+					\ '-Wwrite-strings',
+					\ '-Waggregate-return',
+					\ '-Wswitch-enum',
 					\ '-fopenmp',
 					\ '-I.'
 					\ ]	
 		" Bindings
 		nn [[ :lprev<CR>
 		nn ]] :lnext<CR>
+		" Init
 	endif
+
 	" YouCompleteMe
 	if exists(":YcmCompleter")
 		let g:ycm_autoclose_preview_window_after_insertion = 1
 		let g:ycm_autoclose_preview_window_after_completion = 1
 	endif
+
 	" NERDTREE
 	if exists(":NERDTree")
 		let NERDTreeShowHidden=1
@@ -185,6 +224,7 @@ function! PlugConf()
 		nn <silent> <C-b> :TagbarToggle<CR>
 		nn <silent> <C-t> :NERDTreeToggle<CR>
 	endif
+
 	" ALE
 	if exists(":ALEEnable")
 		let g:ale_fix_on_save = 1
@@ -204,6 +244,7 @@ function! PlugConf()
 		nn ]] :ALENextWrap<CR>
 		nm <F10> :ALEFix<CR>
 	endif
+
 	" Tagbar
 	if exists(":Tagbar")
 		let g:tagbar_autoclose = 1
@@ -245,10 +286,13 @@ for c in range(char2nr('A'), char2nr('Z'))
 endfor
 " Kill the capslock when leaving insert mode.
 autocmd InsertLeave * set iminsert=0
+function MyVimEnter()
+	call PlugConf()
+	if exists(":Neomake")
+		call neomake#configure#automake('nrw', 0)
+		:Neomake
+	endif
+endfunction
 if has("autocmd")
-	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
-au VimEnter * call PlugConf()
-if exists(":Neomake")
-	au VimEnter * call neomake#configure#automake('nrwi', 500)
+	au VimEnter * call MyVimEnter()
 endif
